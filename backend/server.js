@@ -4,27 +4,32 @@ const dotenv = require('dotenv');
 const path = require('path');
 const fs = require('fs');
 
-// Load environment variables
 dotenv.config();
 
 console.log("OPENAI KEY:", process.env.OPENAI_API_KEY ? "LOADED" : "NOT FOUND");
 
-// Import routes
 const resumeRoutes = require('./routes/resume');
-
-// Import database config (optional)
 const connectDB = require('./config/database');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 
-// ✅ ===============================
-// ✅ FIXED CORS (VERY IMPORTANT)
-// allow requests from ANY frontend
-// ===============================
+/*
+==================================================
+✅ BULLETPROOF CORS (WORKS FOR VERCEL + RENDER)
+==================================================
+Allow EVERYTHING
+No origin checks
+No config mistakes
+No deployment issues
+==================================================
+*/
 app.use(cors());
-// ===============================
+app.options('*', cors());
+/*
+==================================================
+*/
 
 
 // Body parsing
@@ -32,14 +37,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-// Create uploads directory if it doesn't exist
+// Ensure uploads folder exists
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
 
-// Connect to MongoDB (optional)
+// Optional DB
 if (process.env.MONGODB_URI) {
   connectDB();
 }
@@ -49,28 +54,26 @@ if (process.env.MONGODB_URI) {
 app.use('/api', resumeRoutes);
 
 
-// Health check endpoint
+// Health
 app.get('/health', (req, res) => {
-  res.status(200).json({
+  res.json({
     status: 'OK',
-    message: 'ATS Resume Checker API is running',
-    timestamp: new Date().toISOString()
+    message: 'ATS Resume Checker API running'
   });
 });
 
 
-// Error handling middleware
+// Error handler
 app.use((err, req, res, next) => {
-  console.error('Error:', err);
-  res.status(err.status || 500).json({
+  console.error(err);
+  res.status(500).json({
     success: false,
-    error: err.message || 'Internal Server Error',
-    ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
+    error: err.message || 'Server error'
   });
 });
 
 
-// 404 handler
+// 404
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -79,11 +82,7 @@ app.use((req, res) => {
 });
 
 
-// Start server
+// Start
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`🔗 API URL: http://localhost:${PORT}`);
 });
-
-module.exports = app;
