@@ -21,6 +21,7 @@ const industries = [
 ];
 
 function HomePage() {
+  debugger
   const [selectedFile, setSelectedFile] = useState(null);
   const [industry, setIndustry] = useState('');
   const [loading, setLoading] = useState(false);
@@ -53,7 +54,7 @@ function HomePage() {
       const formData = new FormData();
       formData.append('file', selectedFile);
       formData.append('industry', industry);
-
+      
       const response = await axios.post(
         `${API_URL}/api/upload-resume`,
         formData,

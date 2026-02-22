@@ -46,8 +46,8 @@ function App() {
         </button>
 
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/results" element={<ResultsPage />} />
+          <Route path="/my-react-frontend" element={<HomePage />} />
+          <Route path="/my-react-frontend/results" element={<ResultsPage />} />
         </Routes>
       </div>
     </Router>
