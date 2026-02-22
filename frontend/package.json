@@ -2,7 +2,9 @@
   "name": "ats-resume-checker-frontend",
   "version": "1.0.0",
   "private": true,
-  "proxy": "http://localhost:5050",
+
+  "homepage": "https://smoksh21.github.io/my-react-frontend",
+
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -13,17 +15,23 @@
     "recharts": "^2.10.3",
     "jspdf": "^2.5.1"
   },
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+
   "devDependencies": {
+    "gh-pages": "^6.0.0",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6"
   },
+
   "browserslist": {
     "production": [
       ">0.2%",
