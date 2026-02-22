@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/my-react-frontend/static/css/main.645b0d11.css",
-    "main.js": "/my-react-frontend/static/js/main.95fe2831.js",
+    "main.js": "/my-react-frontend/static/js/main.f61dfa60.js",
     "static/js/239.d2998fe4.chunk.js": "/my-react-frontend/static/js/239.d2998fe4.chunk.js",
     "static/js/213.27aace1b.chunk.js": "/my-react-frontend/static/js/213.27aace1b.chunk.js",
     "static/js/455.9dd170d3.chunk.js": "/my-react-frontend/static/js/455.9dd170d3.chunk.js",
     "index.html": "/my-react-frontend/index.html",
     "main.645b0d11.css.map": "/my-react-frontend/static/css/main.645b0d11.css.map",
-    "main.95fe2831.js.map": "/my-react-frontend/static/js/main.95fe2831.js.map",
+    "main.f61dfa60.js.map": "/my-react-frontend/static/js/main.f61dfa60.js.map",
     "239.d2998fe4.chunk.js.map": "/my-react-frontend/static/js/239.d2998fe4.chunk.js.map",
     "213.27aace1b.chunk.js.map": "/my-react-frontend/static/js/213.27aace1b.chunk.js.map",
     "455.9dd170d3.chunk.js.map": "/my-react-frontend/static/js/455.9dd170d3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.645b0d11.css",
-    "static/js/main.95fe2831.js"
+    "static/js/main.f61dfa60.js"
   ]
 }
